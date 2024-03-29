@@ -8,28 +8,29 @@
     <title>{{  title }}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light py-2 px-5" >
-        <a class="navbar-brand lora_title" href="">TeaJinja</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-
+    <div class="row">
+      <a class="lora_title pt-3 pb-2" href="{{ url_for('home') }}">TeaJinja</a>
+    </div>
+    <nav class="justify-content-center navbar navbar-expand-lg py-0" >
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarText">-->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="">Home</a>
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Order Tea</a>
+              <a class="nav-link" href="{{ url_for('order') }}">Order Tea</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">Our Stores</a>
             </li>
           </ul>
-        </div>
+<!--        </div>-->
     </nav>
 
 
