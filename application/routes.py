@@ -8,14 +8,14 @@ from application import app
 def home():
     session['loggedIn'] = False
 
-
-@app.route('/about')
-def about():
-
-
-@app.route('/order')
-def order():
-
-
-@app.route('/stores')
-def our_stores():
+#
+# @app.route('/about')
+# def about():
+#
+#
+# @app.route('/order')
+# def order():
+#
+#
+# @app.route('/stores')
+# def our_stores():
