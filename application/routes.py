@@ -6,16 +6,16 @@ from application import app
 @app.route('/')
 @app.route('/home')
 def home():
-    session['loggedIn'] = False
+    return render_template('home.html')
 
-
-@app.route('/about')
-def about():
-
-
-@app.route('/order')
-def order():
-
-
-@app.route('/stores')
-def our_stores():
+#
+# @app.route('/about')
+# def about():
+#
+#
+# @app.route('/order')
+# def order():
+#
+#
+# @app.route('/stores')
+# def our_stores():
