@@ -10,10 +10,12 @@
   font-size: 2rem;
   text-align:center;
   text-decoration: none;
+  background-color: rgb(44, 110, 73, 0.1);
 }
 
 .navbar {
   border-bottom: 1px solid #2C6E49;
+  background-color: rgb(44, 110, 73, 0.1);
 }
 
 .lora_title:hover {
@@ -23,13 +25,13 @@
 .nav-link {
     color: #858381;
     font-family: "Comfortaa", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 300;
-      font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
 }
 
-.nav-link:hover {
-    color: #4C956C;
+.active, .nav-link:hover {
+    color: #4C956C !important;
 }
 
 h1 {
