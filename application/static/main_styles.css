@@ -41,3 +41,20 @@ h1 {
   font-weight: 300;
   font-style: normal;
 }
+
+.tea_image {
+  width: 250px; 
+  height: 250px; 
+  object-fit: cover;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+figcaption {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.1rem !important;
+  text-decoration: none;
+}
+
