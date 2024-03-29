@@ -33,7 +33,12 @@
     </nav>
 
 
-    <footer class="bg-body-tertiary text-center text-lg-start">
+{% block body_content %}
+{% endblock %}
+
+<!--Footer starts here-->
+
+<footer class="bg-body-tertiary text-center text-lg-start">
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <form action="">
@@ -79,6 +84,6 @@
   <!-- Copyright -->
 </footer>
 
-  {% block body_content %}{% endblock %}
+
 </body>
 </html>
