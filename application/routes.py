@@ -14,9 +14,9 @@ def home():
 # def about():
 #
 #
-# @app.route('/order')
-# def order():
-#
-#
+@app.route('/order')
+def order():
+    return render_template('order.html')
+
 # @app.route('/stores')
 # def our_stores():
