@@ -11,7 +11,7 @@ def home():
 
 @app.route('/about/')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', active_about='active')
 
 
 tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/strawberry.webp',
@@ -27,4 +27,4 @@ def order():
 
 @app.route('/stores/')
 def our_stores():
-    return render_template('store.html')
+    return render_template('store.html', active_stores='active')
