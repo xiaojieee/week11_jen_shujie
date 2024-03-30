@@ -4,13 +4,14 @@ from application import app
 
 
 @app.route('/')
-@app.route('/home')
+@app.route('/home/')
 def home():
     return render_template('home.html', active_home='active')
 
 
-# @app.route('/about')
-# def about():
+@app.route('/about/')
+def about():
+    return render_template('about.html')
 
 
 tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/strawberry.webp',
@@ -19,10 +20,11 @@ tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/straw
             'Classic Milk': 'images/strawberry.webp', 'Honey Dew': 'images/strawberry.webp'}
 
 
-@app.route('/order')
+@app.route('/order/')
 def order():
     return render_template('order.html', active_order='active', tea_list=tea_list)
 
 
-# @app.route('/stores')
-# def our_stores():
+@app.route('/stores/')
+def our_stores():
+    return render_template('store.html')
