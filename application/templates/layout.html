@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="row">
-      <a class="lora_title pt-3 pb-2" href="{{ url_for('home') }}">TeaJinja</a>
+      <a class="lora_title pt-3 pb-2" href="{{ url_for('home') }}" >TeaJinja</a>
     </div>
     <nav class="justify-content-center navbar navbar-expand-lg py-0" >
 <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">-->
@@ -21,16 +21,16 @@
               <a class="nav-link {{ active_home }}" href="{{ url_for('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">About Us</a>
+              <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ active_order }}" href="{{ url_for('order') }}">Order Tea</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Our Stores</a>
+              <a class="nav-link" href="{{ url_for('our_stores') }}">Our Stores</a>
             </li>
           </ul>
-<!--        </div>-->
+
     </nav>
 
 
@@ -39,51 +39,13 @@
 
 <!--Footer starts here-->
 
-<footer class="bg-body-tertiary text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <form action="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <p class="pt-2">
-            <strong>Sign up to the tea</strong>
-          </p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-5 col-12 mb-4 mb-md-0">
-          <!-- Email input -->
-          <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" id="form5Example22" class="form-control" />
-            <label class="form-label" for="form5Example22">Email address</label>
-          </div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <!-- Submit button -->
-          <button data-mdb-ripple-init type="button" class="btn btn-primary mb-4">
-            Subscribe
-          </button>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </form>
-  </div>
-  <!-- Grid container -->
-
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+  <div class="text-center p-3" style="background-color: rgba(44, 110, 73, 0.1); margin-top: 100px;">
     © 2024 Copyright:
     <a class="text-body" href="/home/">TeaJinja</a>
   </div>
   <!-- Copyright -->
-</footer>
+
 
 
 </body>
