@@ -57,3 +57,11 @@ figcaption {
   font-size: 1.1rem !important;
   text-decoration: none;
 }
+
+p {
+  text-align: center;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
