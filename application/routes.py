@@ -1,16 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
 from application import app
-import mysql.connector
-
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pa$$w0rd",  # blank for mac
-  database="tea_db"
-)
-
-cursor = mydb.cursor()
+from application.data_access import get_tea, submit_order_db
 
 
 @app.route('/')
@@ -24,15 +14,10 @@ def about():
     return render_template('about.html', active_about='active')
 
 
-tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/bsugar.jpg',
-            'Taro': 'images/strawberry.webp', 'Matcha': 'images/strawberry.webp', 'Rose Milk':
-                'images/strawberry.webp', 'Mango Boba': 'images/strawberry.webp',
-            'Classic Milk': 'images/strawberry.webp', 'Honey Dew': 'images/strawberry.webp'}
-
-
 @app.route('/order/')
 def order():
-    return render_template('order.html', active_order='active', tea_list=tea_list)
+    tea_from_db = get_tea()
+    return render_template('order.html', active_order='active', tea_db=tea_from_db)
 
 
 @app.route('/stores/')
@@ -47,16 +32,12 @@ def our_stores():
 
 @app.route('/basket/', methods=['GET', 'POST'])
 def basket():
+
     if request.method == 'POST':
         name = request.form['name']
         teaType = request.form['teaType']
 
-        # Insert data into the tea_orders table
-        sql = "INSERT INTO tea_orders (name_n, tea_type) VALUES (%s, %s)"
-        values = (name, teaType)
-
-        cursor.execute(sql, values)
-        mydb.commit()
+        submit_order_db(name, teaType)
 
         return redirect(url_for('complete'))
 

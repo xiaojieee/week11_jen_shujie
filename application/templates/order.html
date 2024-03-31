@@ -8,14 +8,16 @@
     </div>
     <div class="col-md-10 text-center">
         <div class="row">
-        {% for tea_title, tea_file in tea_list.items() %}
+        {% for tea in tea_db %}
+
         <div class="col-md-3">
             <a class="image_link" href="">
-                <img class="tea_image" src="{{ url_for('static', filename=tea_file) }}">
-                <a href="/basket/" class="btn btn-primary" role="button">Add to Cart</a>
+                <img class="tea_image" src="{{ url_for('static', filename=tea.tea_filename) }}">
+                <button onclick="addToCart})" type="button" class="btn btn-primary">Add to Cart</button>
             </a>
-            <figcaption class="figure-caption mt-4 mb-5">{{ tea_title }} £4.95</figcaption>
+            <figcaption class="figure-caption mt-4 mb-5">{{ tea.tea_name }} £{{ tea.tea_price }}</figcaption>
         </div>
+
         {% endfor %}
         </div>
     </div>
