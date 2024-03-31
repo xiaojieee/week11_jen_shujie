@@ -34,7 +34,7 @@
     color: #4C956C !important;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
