@@ -1,8 +1,26 @@
 {% extends "layout.html" %}
+{% block body_content %}
 
-{%block body_content %}
 
+<body>
+  <h1>Order Your Tea here</h1>
+  <form id="teaForm" method="post" action="{{ url_for('basket') }}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
 
-{% endif %}
+    <label for="teaType">Select your tea:</label>
+    <select id="teaType" name="teaType">
+      <option value="Strawberry">Strawberry</option>
+      <option value="Brown Sugar">Brown Sugar</option>
+      <option value="Taro">Taro</option>
+      <option value="Matcha">Matcha</option>
+      <option value="Rose Milk">Rose Milk</option>
+      <option value="Mango Boba">Mango Boba</option>
+      <option value="Classic Milk">Classic Milk</option>
+      <option value="Honey Dew">Honey Dew</option>
+    </select><br><br>
 
+    <input type="submit" value="Submit">
+  </form>
+</body>
 {% endblock %}

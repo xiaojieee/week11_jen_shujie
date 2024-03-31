@@ -1,0 +1,13 @@
+CREATE DATABASE Tea_DB;
+
+USE Tea_DB;
+
+
+CREATE TABLE tea_orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name_n VARCHAR(50) NOT NULL,
+    tea_type VARCHAR(50) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM tea_orders
