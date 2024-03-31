@@ -8,6 +8,20 @@ mydb = mysql.connector.connect(
 )
 
 
+def main():
+    print(mydb)
+
+    cursor = mydb.cursor()
+
+    sql = "INSERT INTO orders (tea_id, user_id, collection_time) VALUES (%s, %s, %s)"
+    val = ("1", "1", '16:00:00')
+    cursor.execute(sql, val)
+
+    mydb.commit()
+
+    print(cursor.rowcount, "record inserted.")
+
+
 def get_db_connection():
     mydb = mysql.connector.connect(
         host="localhost",
@@ -29,3 +43,6 @@ def add_order(tea, user, collection):
 
     conn.commit()
 
+
+if __name__ == "__main__":
+    main()
