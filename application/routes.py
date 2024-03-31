@@ -14,7 +14,7 @@ def about():
     return render_template('about.html', active_about='active')
 
 
-tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/strawberry.webp',
+tea_list = {'Strawberry': 'images/strawberry.webp', 'Brown Sugar': 'images/bsugar.jpg',
             'Taro': 'images/strawberry.webp', 'Matcha': 'images/strawberry.webp', 'Rose Milk':
                 'images/strawberry.webp', 'Mango Boba': 'images/strawberry.webp',
             'Classic Milk': 'images/strawberry.webp', 'Honey Dew': 'images/strawberry.webp'}
