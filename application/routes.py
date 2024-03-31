@@ -28,7 +28,3 @@ def order():
 @app.route('/stores/')
 def our_stores():
     return render_template('store.html', active_stores='active')
-
-@app.route('/basket/')
-def basket():
-    return render_template('basket.html', active_basket='active')
