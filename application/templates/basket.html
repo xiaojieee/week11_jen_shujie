@@ -10,74 +10,52 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+
               <table class="table table-bordered m-0">
                 <thead>
                   <tr>
                     <!-- Set columns width -->
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                    <th class="text-center py-3 px-4" style="min-width: 400px;">Bubble Teas</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
                     <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
-                    <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                   </tr>
                 </thead>
+
                 <tbody>
-        
                   <tr>
                     <td class="p-4">
-                      <div class="media align-items-center">
-                        <img src="{{ url_for('static', filename='/images/strawberry.webp') }}" class="tea_image d-block ui-w-40 ui-bordered mr-4" alt="">
-                        <div class="media-body">
-                          <a href="#" class="d-block text-dark">Strawberry Boba</a>
-                          <small>
-                            <!-- <span class="text-muted">Toppings</span> -->
-                          </small>
-                        </div>
+                      <div class="align-items-center">
+                        <img src="{{ url_for('static', filename='/images/strawberry.webp') }}" class="tea_image" alt="">
+                            <figcaption class="figure-caption mt-4 mb-5">Strawberry</figcaption>
                       </div>
                     </td>
-                    <td class="text-right font-weight-semibold align-middle p-4">$57.55</td>
-                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
-                    <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
-                    <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                    <td class="text-right font-weight-semibold align-middle p-4">£5.00</td>
+                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
+                    <td class="text-right font-weight-semibold align-middle p-4">£10.00</td>
+                    <td class="text-center align-middle px-0"><a href="#" class="text-danger">X</a></td>
                   </tr>
-
-                  <tr>
-                    <td class="p-4">
-                      <div class="media align-items-center">
-                        <img src="{{ url_for('static', filename='/images/strawberry.webp') }}" class="tea_image d-block ui-w-40 ui-bordered mr-4" alt="">
-                        <div class="media-body">
-                          <a href="#" class="d-block text-dark">Strawberry Boba</a>
-                          <small>
-                            <!-- <span class="text-muted">Toppings</span> -->
-                          </small>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-right font-weight-semibold align-middle p-4">$57.55</td>
-                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
-                    <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
-                    <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
-                  </tr>
-
+                  
                 </tbody>
+
               </table>
             </div>
             <!-- / Shopping cart table -->
-        
-            <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
-              <div class="d-flex">
-                <div class="text-right mt-4">
-                  <label class="text-muted font-weight-normal m-0">Total price</label>
-                  <div class="text-large"><strong>$1164.65</strong></div>
+            <div class="checkout float-right">
+                <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                    <div class="d-flex">
+                        <div class="text-right mt-4">
+                        <label class="text-muted font-weight-normal m-0">Total Price</label>
+                        <div class="text-large">£10.00</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            
+                <div class="float-right">
+                <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                </div>
             </div>
-        
-            <div class="float-right">
-              <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
-            </div>
-        
-          </div>
+          
       </div>
   </div>
 
