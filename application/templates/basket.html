@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
+<br>
+<h1>Order Your Tea here</h1>
+<br>
+<div style="display: flex; justify-content: center;">
 
-<body>
-  <h1>Order Your Tea here</h1>
   <form id="teaForm" method="post" action="{{ url_for('basket') }}">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
@@ -20,7 +22,8 @@
       <option value="Honey Dew">Honey Dew</option>
     </select><br><br>
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" style="margin-left: 90px;">
   </form>
-</body>
+
+</div>
 {% endblock %}
