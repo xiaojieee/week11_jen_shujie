@@ -56,7 +56,7 @@ def basket():
 
             submit_order_db(tea_id, quantity, customer_name, collection_time)
 
-        # clearing the basket after the order is complete
+        # clearing the basket's list after the order is complete
         session['basket'] = []
         return redirect(url_for('complete'))
 

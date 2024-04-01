@@ -9,15 +9,15 @@
             <h1>Basket</h1>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
 
-              <table class="table table-bordered m-0">
+            <div class="table-responsive">
+                <table class="table table-bordered m-0">
+
                 <thead>
                   <tr>
-                    <!-- Set columns width -->
-                    <th class="text-center py-3 px-4" style="min-width: 120p">Bubble Teas</th>
-                    <th class="text-right py-3 px-4" style="width: 120px;">Price</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                    <th class="basket_teas_title py-3 px-4">Bubble Teas</th>
+                    <th class="basket_title py-3 px-4">Price</th>
+                    <th class="basket_title py-3 px-4">Quantity</th>
                   </tr>
                 </thead>
 
@@ -27,43 +27,33 @@
                     <td class="p-4">
                       <div class="align-items-center">
                         <img src="{{ url_for('static', filename=tea.tea_filename) }}" class="tea_image" alt="">
-                            <figcaption class="figure-caption mt-4 mb-5">{{ tea_name }}</figcaption>
+                            <figcaption class="figure-caption mt-4">{{ tea.tea_name }}</figcaption>
                       </div>
                     </td>
-                    <td class="text-right font-weight-semibold align-middle p-4">£{{ tea.tea_price }}</td>
-                    <td class="text-right font-weight-semibold align-middle p-4">{{ tea.quantity }}</td>
+                    <td class="text-right align-middle p-4">£{{ tea.tea_price }}</td>
+                    <td class="text-right align-middle p-4">{{ tea.quantity }}</td>
                   </tr>
                   {% endfor %}
+                  <tr>
+                      <th class="basket_title py-3 px-4">Total</th>
+                      <th class="basket_title py-3 px-4">£10.00</th>
+                      <th class="basket_title py-3 px-4">5</th>
+                  </tr>
                 </tbody>
-
               </table>
             </div>
-            <!-- / Shopping cart table -->
-            <div class="checkout float-right">
-                <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
-                    <div class="d-flex">
-                        <div class="text-right mt-4">
-                        <label class="text-muted font-weight-normal m-0">Total Price</label>
-                        <div class="text-large">£10.00</div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="float-right">
-                    <form method="POST">
-                        {% for tea in basket %}
+            <div class="checkout">
+                <form method="POST" class="text-center">
+                    {% for tea in basket %}
                         <input type="hidden" name="tea_id[]" value="{{ tea.tea_id }}">
                         <input type="hidden" name="quantity[]" value="{{ tea.quantity }}">
-                        {% endfor %}
-                        <label for="customer_name">Customer Name:</label>
-                        <input type="text" id="customer_name" name="customer_name" required>
-                        <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
-                    </form>
-                </div>
+                    {% endfor %}
+                    <label for="customer_name">Customer Name:</label>
+                    <input type="text" id="customer_name" class="my-5" name="customer_name" required><br>
+                    <button type="submit" class="checkout_button p-1 btn btn-lg btn-primary mb-2">Checkout</button>
+                </form>
             </div>
-          
       </div>
   </div>
-
 
 {% endblock %}

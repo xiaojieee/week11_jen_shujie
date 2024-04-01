@@ -13,13 +13,13 @@
   background-color: rgb(44, 110, 73, 0.1);
 }
 
+.lora_title:hover {
+  color: #2C6E49;
+}
+
 .navbar {
   border-bottom: 1px solid #2C6E49;
   background-color: rgb(44, 110, 73, 0.1);
-}
-
-.lora_title:hover {
-  color: #2C6E49;
 }
 
 .nav-link {
@@ -73,4 +73,21 @@ p {
 
 #quantity {
     width: 50px;
+}
+
+.basket_title {
+    max-width: 80px;
+}
+
+.checkout_button{
+    width: 500px;
+}
+
+.checkout_button, .basket_button {
+    background-color: rgb(44, 110, 73, 0.8);
+    border: none;
+}
+
+.checkout_button:hover, .basket_button:hover {
+    background-color: rgb(44, 110, 73, 1);
 }
