@@ -11,14 +11,18 @@
         {% for tea in tea_db %}
 
         <div class="col-md-3">
-            <a class="image_link" href="">
                 <img class="tea_image" src="{{ url_for('static', filename=tea.tea_filename) }}">
-                <button onclick="addToCart})" type="button" class="btn btn-primary">Add to Cart</button>
-            </a>
-            <figcaption class="figure-caption mt-4 mb-5">{{ tea.tea_name }} £{{ tea.tea_price }}</figcaption>
+                <figcaption class="figure-caption mt-2 mb-2">{{ tea.tea_name }} £{{ tea.tea_price }}</figcaption>
+                <form method="POST">
+                    <input type="hidden" name="tea_id[]" value="{{ tea.tea_id }}">
+                    <input type="hidden" name="tea_name[]" value="{{ tea.tea_name }}">
+                    <input type="hidden" name="tea_price[]" value="{{ tea.tea_price }}">
+                    <input type="hidden" name="tea_filename[]" value="{{ tea.tea_filename }}">
+                    <input type="number" id="quantity" name="quantity[]" min="1" max="5">
         </div>
-
         {% endfor %}
+                    <button type="submit" class="btn btn-primary my-5">Add to Basket</button>
+                </form>
         </div>
     </div>
     <div class="col-md-1">

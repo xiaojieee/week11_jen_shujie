@@ -15,25 +15,25 @@
                 <thead>
                   <tr>
                     <!-- Set columns width -->
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Bubble Teas</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                    <th class="text-center py-3 px-4" style="min-width: 120p">Bubble Teas</th>
+                    <th class="text-right py-3 px-4" style="width: 120px;">Price</th>
                     <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
                   </tr>
                 </thead>
 
                 <tbody>
+                  {% for tea in basket %}
                   <tr>
                     <td class="p-4">
                       <div class="align-items-center">
-                        <img src="{{ url_for('static', filename='/images/strawberry.webp') }}" class="tea_image" alt="">
-                            <figcaption class="figure-caption mt-4 mb-5">Strawberry</figcaption>
+                        <img src="{{ url_for('static', filename=tea.tea_filename) }}" class="tea_image" alt="">
+                            <figcaption class="figure-caption mt-4 mb-5">{{ tea_name }}</figcaption>
                       </div>
                     </td>
-                    <td class="text-right font-weight-semibold align-middle p-4">£5.00</td>
-                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
-                    <td class="text-right font-weight-semibold align-middle p-4">£10.00</td>
-                    <td class="text-center align-middle px-0"><a href="#" class="text-danger">X</a></td>
+                    <td class="text-right font-weight-semibold align-middle p-4">£{{ tea.tea_price }}</td>
+                    <td class="text-right font-weight-semibold align-middle p-4">{{ tea.quantity }}</td>
+<!--                    <td class="text-center align-middle px-0"><a href="#" class="text-danger">X</a></td>-->
+                    {% endfor %}
                   </tr>
 
                 </tbody>
