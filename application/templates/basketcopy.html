@@ -28,7 +28,7 @@
                             <td class="p-4">
                               <div class="align-items-center">
                                 <img src="{{ url_for('static', filename=tea.tea_filename) }}" class="tea_image" alt="">
-                                    <figcaption class="figure-caption mt-4">{{ tea.tea_name }}</figcaption>
+                                    <p class="figure-caption text-start mt-4">{{ tea.tea_name }}</p>
                               </div>
                             </td>
                             <td class="text-right align-middle p-4">£{{ tea.tea_price }}</td>
@@ -57,5 +57,6 @@
             </div>
       </div>
   </div>
+</div>
 
 {% endblock %}
