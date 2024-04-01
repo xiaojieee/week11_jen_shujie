@@ -30,8 +30,7 @@ def order():
         quantities = request.form.getlist('quantity[]')
         filenames = request.form.getlist('tea_filename[]')
 
-        tea_chosen = zip(tea_ids, tea_names, tea_prices, quantities, filenames)
-
+        tea_chosen = zip(tea_ids, tea_names, tea_prices, quantities, filenames
         add_to_basket(tea_chosen, session['basket'])
 
     return render_template('order.html', active_order='active', tea_db=tea_from_db)
