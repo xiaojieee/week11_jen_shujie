@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, redirect, session
 from application import app
-from application.basket import add_to_basket
-from application.data_access import get_tea
+from application.basket_functions import add_to_basket
+from application.data_access import get_tea, submit_order_db
 
 
 @app.route('/')
@@ -41,9 +41,25 @@ def our_stores():
     return render_template('store.html', active_stores='active')
 
 
-@app.route('/basket/')
+@app.route('/basket/', methods=['GET', 'POST'])
 def basket():
+
     customer_basket = session.get('basket', [])  # Get basket from session, return empty list if not present
+
+    if customer_basket and request.method == 'POST':
+        customer_name = request.form['customer_name']
+
+        for item in customer_basket:
+            tea_id = item['tea_id']
+            quantity = item['quantity']
+            collection_time = 13
+
+            submit_order_db(tea_id, quantity, customer_name, collection_time)
+
+        # clearing the basket after the order is complete
+        session['basket'] = []
+        return redirect(url_for('complete'))
+
     return render_template('basketcopy.html', basket=customer_basket)
 
 

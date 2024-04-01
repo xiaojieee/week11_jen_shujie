@@ -1,14 +1,5 @@
 import mysql.connector
 
-# mydb = mysql.connector.connect(
-#   host="localhost",
-#   user="root",
-#   password="Pa$$w0rd",  # blank for mac
-#   database="tea_db"
-# )
-#
-# cursor = mydb.cursor()
-
 
 def get_db_connection():
     mydb = mysql.connector.connect(
@@ -34,13 +25,13 @@ def get_tea():
     return tea_list
 
 
-def submit_order_db(customer_name, tea_name):
+def submit_order_db(tea_id, quantity, name, collection_time):
     mydb = get_db_connection()
     cursor = mydb.cursor()
 
-    # Insert data into the tea_orders table
-    sql = "INSERT INTO tea_orders (name_n, tea_type) VALUES (%s, %s)"
-    values = (customer_name, tea_name)
+    # Insert data into the orders table
+    sql = "INSERT INTO orders (tea_id, quantity, customer_name, collection_time) VALUES (%s, %s, %s, %s)"
+    values = (tea_id, quantity, name, collection_time)
 
     cursor.execute(sql, values)
     mydb.commit()
@@ -58,16 +49,3 @@ def submit_order_db(customer_name, tea_name):
 #
 #     print(cursor.rowcount, "record inserted.")
 #
-# def add_order(tea, user, collection):
-#     conn = get_db_connection()
-#     cursor = conn.cursor()
-#
-#     sql = "INSERT INTO orders (tea_id, user_id, collection_time) VALUES (%s, %s, %s)"
-#     val = (tea, user, collection)
-#     cursor.execute(sql, val)
-#
-#     conn.commit()
-#
-#
-# if __name__ == "__main__":
-#     main()

@@ -32,10 +32,8 @@
                     </td>
                     <td class="text-right font-weight-semibold align-middle p-4">£{{ tea.tea_price }}</td>
                     <td class="text-right font-weight-semibold align-middle p-4">{{ tea.quantity }}</td>
-<!--                    <td class="text-center align-middle px-0"><a href="#" class="text-danger">X</a></td>-->
-                    {% endfor %}
                   </tr>
-
+                  {% endfor %}
                 </tbody>
 
               </table>
@@ -52,7 +50,15 @@
                 </div>
             
                 <div class="float-right">
-                <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                    <form method="POST">
+                        {% for tea in basket %}
+                        <input type="hidden" name="tea_id[]" value="{{ tea.tea_id }}">
+                        <input type="hidden" name="quantity[]" value="{{ tea.quantity }}">
+                        {% endfor %}
+                        <label for="customer_name">Customer Name:</label>
+                        <input type="text" id="customer_name" name="customer_name" required>
+                        <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                    </form>
                 </div>
             </div>
           
