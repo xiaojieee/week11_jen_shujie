@@ -6,7 +6,7 @@ create table tea
 (
 tea_id INT AUTO_INCREMENT PRIMARY KEY,
 tea_name VARCHAR(50) NOT NULL,
-tea_price DECIMAL(3,2) NOT NULL,
+tea_price FLOAT(3,2) NOT NULL,
 tea_file_name VARCHAR(50) NOT NULL
 );
 
@@ -24,26 +24,24 @@ order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 INSERT INTO tea (tea_name, tea_price, tea_file_name)
 VALUES
 ('Strawberry', 4.95, 'images/strawberry.webp'),
-('Brown Sugar', 4.95, 'images/bsugar.jpg');
--- ('Taro', 4.95, 'images/strawberry.webp'),
--- ('Matcha', 4.95, 'images/strawberry.webp'),
--- ('Rose Milk', 4.95, 'images/strawberry.webp'),
--- ('Mango Boba', 4.95, 'images/strawberry.webp'),
--- ('Classic Milk', 4.95, 'images/strawberry.webp'),
--- ('Honey Dew', 4.95, 'images/strawberry.webp');
+('Brown Sugar', 4.95, 'images/bsugar.jpg'),
+('Taro', 5.00, 'images/taro1.jpg'),
+('Matcha', 5.95, 'images/matcha1.jpg'),
+('Rose Milk', 4.95, 'images/rose.webp'),
+('Mango Boba', 5.95, 'images/mango.jpg'),
+('Classic Milk', 3.95, 'images/milk.jpg'),
+('Honey Dew', 5.95, 'images/honeydew.jpg');
 
 SELECT * FROM tea;
 
-
-
 SELECT * FROM orders;
 
--- View to see the order queue! 
 
-CREATE VIEW orders_view AS
-SELECT o.order_id, t.tea_name, u.u_name AS user_name, o.collection_time
+-- View to see who ordered what and collection time 
+CREATE VIEW OrderQueue AS
+SELECT o.customer_name, t.tea_name, o.quantity, o.collection_time
 FROM orders o
-JOIN tea t ON o.tea_id = t.tea_id
-JOIN USERS u ON o.user_id = u.user_id;
+JOIN tea t ON o.tea_id = t.tea_id;
 
-SELECT * FROM orders_view;
+
+SELECT * FROM OrderQueue;
