@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
 from application import app
-from application.basket_functions import add_to_basket
+from application.basket_functions import add_to_basket, calculate_totals
 from application.data_access import get_tea, submit_order_db
 from datetime import datetime, timedelta
 
@@ -42,26 +42,6 @@ def our_stores():
     return render_template('store.html', active_stores='active')
 
 
-def calculate_totals(basket):
-    total_price = 0
-    total_quantity = 0
-
-    for tea in basket:
-        try:
-            tea_price = float(tea['tea_price'])
-            quantity_str = tea.get('quantity', '')
-            if quantity_str:
-                quantity = int(quantity_str)
-                total_price += tea_price * quantity
-                total_quantity += quantity
-        except (ValueError, TypeError):
-            continue
-
-    total_price_rounded = "{:.2f}".format(total_price)
-
-    return total_price_rounded, total_quantity
-
-
 @app.route('/basket/', methods=['GET', 'POST'])
 def basket():
 
@@ -93,6 +73,11 @@ def basket():
     return render_template('basketcopy.html', basket=customer_basket, total_price=total_price, total_quantity=total_quantity)
 
 
+@app.route('/complete/')
+def complete():
+    return render_template('complete_order.html')
+
+
 # @app.route('/basket/', methods=['GET', 'POST'])
 # def basket():
 #
@@ -105,8 +90,3 @@ def basket():
 #         return redirect(url_for('complete'))
 #
 #     return render_template('basket.html')
-
-
-@app.route('/complete/')
-def complete():
-    return render_template('complete_order.html')

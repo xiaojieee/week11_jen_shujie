@@ -83,6 +83,11 @@ p {
     width: 500px;
 }
 
+.basket_button{
+    width: 500px;
+    font-size: 1.25rem;
+}
+
 .checkout_button, .basket_button {
     background-color: rgb(44, 110, 73, 0.8);
     border: none;
