@@ -64,8 +64,8 @@ def basket():
 
             submit_order_db(tea_id, quantity, customer_name, collection_time)
 
-        # clearing the basket's list after the order is complete
-        session['basket'] = []
+        # Removing/ending the basket session
+        session.pop('basket')
         return redirect(url_for('complete'))
 
     total_price, total_quantity = calculate_totals(customer_basket)
@@ -75,7 +75,7 @@ def basket():
 
 @app.route('/clear_basket')
 def clear_basket():
-    session['basket'] = []  # Clear the basket by assigning an empty list to it
+    session.pop('basket')
     return redirect(url_for('basket'))  # Redirect back to the basket page
 
 

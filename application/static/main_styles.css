@@ -96,6 +96,11 @@ p {
     background-color: rgb(44, 110, 73, 1);
 }
 
+.clear_button {
+    float: right !important;
+}
+
+
 .footer {
       position: absolute;
       left: 0;
