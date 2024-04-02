@@ -57,7 +57,7 @@ def calculate_totals(basket):
         except (ValueError, TypeError):
             continue
 
-    total_price_rounded = round(total_price, 2)
+    total_price_rounded = "{:.2f}".format(total_price)
 
     return total_price_rounded, total_quantity
 
