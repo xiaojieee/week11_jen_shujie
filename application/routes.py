@@ -77,7 +77,8 @@ def basket():
         return redirect(url_for('complete'))
 
     total_price, total_quantity = calculate_totals(customer_basket)
-    return render_template('basketcopy.html', basket=customer_basket, total_price=total_price, total_quantity=total_quantity)
+    return render_template('basket_V2.html', basket=customer_basket, total_price=total_price,
+                           total_quantity=total_quantity)
 
 
 @app.route('/basket/clear')
@@ -106,4 +107,4 @@ def complete():
 #
 #         return redirect(url_for('complete'))
 #
-#     return render_template('basket.html')
+#     return render_template('basket_V1.html')
