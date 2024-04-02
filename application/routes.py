@@ -82,8 +82,11 @@ def basket():
 
 @app.route('/basket/clear')
 def clear_basket():
-    session.pop('basket')
-    return redirect(url_for('basket'))  # Redirect back to the basket page
+    if 'basket' in session:
+        session.pop('basket')
+        return redirect(url_for('basket'))  # Redirect back to the basket page
+    else:
+        return redirect(url_for('basket'))
 
 
 @app.route('/complete/')
