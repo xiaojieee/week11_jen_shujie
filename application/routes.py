@@ -42,6 +42,26 @@ def our_stores():
     return render_template('store.html', active_stores='active')
 
 
+def calculate_totals(basket):
+    total_price = 0
+    total_quantity = 0
+
+    for tea in basket:
+        try:
+            tea_price = float(tea['tea_price'])
+            quantity_str = tea.get('quantity', '')
+            if quantity_str:
+                quantity = int(quantity_str)
+                total_price += tea_price * quantity
+                total_quantity += quantity
+        except (ValueError, TypeError):
+            continue
+
+    total_price_rounded = round(total_price, 2)
+
+    return total_price_rounded, total_quantity
+
+
 @app.route('/basket/', methods=['GET', 'POST'])
 def basket():
 
@@ -59,8 +79,8 @@ def basket():
                 continue
 
             current_time = datetime.now()
-            adjusted_time = current_time + timedelta(minutes=30)
-            collection_time = adjusted_time.strftime("%H:%M")
+            add_time = current_time + timedelta(minutes=30)
+            collection_time = add_time.strftime("%H:%M")
 
             submit_order_db(tea_id, quantity, customer_name, collection_time)
 
@@ -68,7 +88,9 @@ def basket():
         session['basket'] = []
         return redirect(url_for('complete'))
 
-    return render_template('basketcopy.html', basket=customer_basket)
+    total_price, total_quantity = calculate_totals(customer_basket)
+
+    return render_template('basketcopy.html', basket=customer_basket, total_price=total_price, total_quantity=total_quantity)
 
 
 # @app.route('/basket/', methods=['GET', 'POST'])

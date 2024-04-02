@@ -10,13 +10,6 @@ tea_price DECIMAL(3,2) NOT NULL,
 tea_file_name VARCHAR(50) NOT NULL
 );
 
--- create table USERS
--- (
--- user_id INT AUTO_INCREMENT PRIMARY KEY,
--- u_name VARCHAR(50) NOT NULL,
--- email VARCHAR(50) NOT NULL,
--- mobile INT NOT NULL
--- );
 
 create table orders
 (
@@ -41,15 +34,7 @@ VALUES
 
 SELECT * FROM tea;
 
--- INSERT INTO users (u_name, email, mobile)
--- VALUES
--- ('Lisa', 'lisa@simpson.com', 12345678);
 
--- SELECT * FROM users;
-
--- INSERT INTO orders (tea_id, user_id, collection_time)
--- VALUES
--- (1, 1, '15:00:00');
 
 SELECT * FROM orders;
 
