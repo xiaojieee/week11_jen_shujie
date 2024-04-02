@@ -24,7 +24,7 @@
 
                 <tbody>
                   {% for tea in basket %}
-                      {% if tea.quantity %}
+
                           <tr>
                             <td class="p-4">
                               <div class="align-items-center">
@@ -35,7 +35,7 @@
                             <td class="text-right align-middle p-4">£{{ tea.tea_price }}</td>
                             <td class="text-right align-middle p-4">{{ tea.quantity }}</td>
                           </tr>
-                      {% endif %}
+
                   {% endfor %}
                   <tr>
                       <th class="basket_title py-3 px-4">Total</th>
