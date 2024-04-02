@@ -73,6 +73,12 @@ def basket():
     return render_template('basketcopy.html', basket=customer_basket, total_price=total_price, total_quantity=total_quantity)
 
 
+@app.route('/clear_basket')
+def clear_basket():
+    session['basket'] = []  # Clear the basket by assigning an empty list to it
+    return redirect(url_for('basket'))  # Redirect back to the basket page
+
+
 @app.route('/complete/')
 def complete():
     return render_template('complete_order.html')
