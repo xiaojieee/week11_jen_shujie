@@ -54,6 +54,7 @@ CREATE VIEW OrderQueue AS
 SELECT o.customer_name, t.tea_name, o.quantity, c.collection_number, c.collection_time
 FROM orders o
 JOIN tea t ON o.tea_id = t.tea_id
-JOIN collection c ON o.collection_id = c.collection_id;
+JOIN collection c ON o.collection_id = c.collection_id
+ORDER BY c.collection_number;
 
 SELECT * FROM OrderQueue;

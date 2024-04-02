@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, redirect, session
 from application import app
 from application.basket_functions import add_to_basket, calculate_totals
-from application.data_access import get_tea, submit_order_db, submit_collection_db
+from application.data_access import get_tea, submit_order_db, submit_collection_db, get_last_collection_id
 from application.order_functions import create_collection_time
 
 
@@ -79,7 +79,8 @@ def clear_basket():
 
 @app.route('/complete/')
 def complete():
-    return render_template('complete_order.html')
+    collection_number = get_last_collection_id()
+    return render_template('complete_order.html', collection_number=collection_number)
 
 
 # @app.route('/basket/', methods=['GET', 'POST'])
