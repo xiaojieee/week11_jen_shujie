@@ -2,7 +2,7 @@ from flask import render_template, url_for, request, redirect, session
 from application import app
 from application.basket_functions import add_to_basket
 from application.data_access import get_tea, submit_order_db
-
+from datetime import datetime, timedelta
 
 
 @app.route('/')
@@ -58,7 +58,9 @@ def basket():
             except ValueError:
                 continue
 
-            collection_time = 13
+            current_time = datetime.now()
+            adjusted_time = current_time + timedelta(minutes=30)
+            collection_time = adjusted_time.strftime("%H:%M")
 
             submit_order_db(tea_id, quantity, customer_name, collection_time)
 
