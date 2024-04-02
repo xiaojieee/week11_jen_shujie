@@ -4,6 +4,7 @@ from application.basket_functions import add_to_basket
 from application.data_access import get_tea, submit_order_db
 
 
+
 @app.route('/')
 @app.route('/home/')
 def home():
@@ -50,8 +51,13 @@ def basket():
         customer_name = request.form['customer_name']
 
         for item in customer_basket:
-            tea_id = item['tea_id']
-            quantity = item['quantity']
+            tea_id = int(item['tea_id'])
+            quantity_str = item.get('quantity', '')
+            try:
+                quantity = int(quantity_str)
+            except ValueError:
+                continue
+
             collection_time = 13
 
             submit_order_db(tea_id, quantity, customer_name, collection_time)
