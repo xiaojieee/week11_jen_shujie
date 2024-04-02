@@ -1,8 +1,8 @@
 from flask import render_template, url_for, request, redirect, session
 from application import app
 from application.basket_functions import add_to_basket, calculate_totals
-from application.data_access import get_tea, submit_order_db
-from datetime import datetime, timedelta
+from application.data_access import get_tea, submit_order_db, submit_collection_db
+from application.order_functions import create_collection_time
 
 
 @app.route('/')
@@ -50,6 +50,9 @@ def basket():
     if customer_basket and request.method == 'POST':
         customer_name = request.form['customer_name']
 
+        collection_time = create_collection_time()
+        submit_collection_db(collection_time)
+
         for item in customer_basket:
             tea_id = int(item['tea_id'])
             quantity_str = item.get('quantity', '')
@@ -58,22 +61,17 @@ def basket():
             except ValueError:
                 continue
 
-            current_time = datetime.now()
-            add_time = current_time + timedelta(minutes=30)
-            collection_time = add_time.strftime("%H:%M")
-
-            submit_order_db(tea_id, quantity, customer_name, collection_time)
+            submit_order_db(tea_id, quantity, customer_name)
 
         # Removing/ending the basket session
         session.pop('basket')
         return redirect(url_for('complete'))
 
     total_price, total_quantity = calculate_totals(customer_basket)
-
     return render_template('basketcopy.html', basket=customer_basket, total_price=total_price, total_quantity=total_quantity)
 
 
-@app.route('/clear_basket')
+@app.route('/basket/clear')
 def clear_basket():
     session.pop('basket')
     return redirect(url_for('basket'))  # Redirect back to the basket page
