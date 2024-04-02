@@ -16,22 +16,31 @@ def about():
     return render_template('about.html', active_about='active')
 
 
+# This route can handle both GET and POST methods
 @app.route('/order/', methods=['GET', 'POST'])
 def order():
+    # returns data from the tea table
     tea_from_db = get_tea()
 
     if request.method == 'POST':
 
         if 'basket' not in session:
+            # initializes basket session and assigns it with an empty list
             session['basket'] = []
 
+        # Each line receives a list of values from specific form inputs
+        # Allows more than one flavour to be submitted
         tea_ids = request.form.getlist('tea_id[]')
-        tea_names = request.form.getlist('tea_name[]')
+        tea_names = request.form.getlist('tea_name[]')  # Example: ['Strawberry', 'Matcha', 'Taro']
         tea_prices = request.form.getlist('tea_price[]')
         quantities = request.form.getlist('quantity[]')
         filenames = request.form.getlist('tea_filename[]')
 
+        #  zip() combines the lists of tea inputs into a list of tuples
+        # Example: [('1', 'Green Tea', '2.5', '2', 'green_tea.jpg'), etc.]
         tea_chosen = zip(tea_ids, tea_names, tea_prices, quantities, filenames)
+
+        # function iterates over each tuple and appends it to the basket session's empty list as a dictionary
         add_to_basket(tea_chosen, session['basket'])
 
     return render_template('order.html', active_order='active', tea_db=tea_from_db)
